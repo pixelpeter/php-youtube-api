@@ -70,7 +70,7 @@ class Youtube {
      * @param  string  $order      Order by
      * @return StdClass            API results
      */
-    public function searchVideos($q, $maxResults=10, $order=null){
+    public function searchVideos($q, $maxResults=10, $order=null, $videoCategoryId=null){
 
         $params = array(
             'q' => $q,
@@ -81,7 +81,9 @@ class Youtube {
         if(!empty($order)){
             $params['order'] = $order;
         }
-
+        if(!empty($videoCategoryId)){
+            $params['videoCategoryId'] = $videoCategoryId;
+        }
         return $this->searchAdvanced($params);
     }
 
